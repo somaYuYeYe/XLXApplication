@@ -23,5 +23,15 @@
     <!-- 密码成功 -->
     <string name="congratulation">恭喜您，新密码设置成功！</string>
     <string name="over_str">完成</string>
+    <!-- 调查问卷 -->
+    <string name="question_title">调查问卷</string>
+    <string name="ques_desc_str">由于用户过于热情，借款量爆棚，目前暂停全面放款，您可以持续关注速领薪公众号，最新活动福利随时掌握！\n请填写调查问卷，我们会向您发送借款资格，并且会选出优秀的建议，送出5张10元现金抵扣卷！</string>
+    <string name="ques_credit">您是否有信用卡？(单选)</string>
+    <string name="ques_loan_history">您是否在其他平台借过款？(单选)</string>
+    <string name="ques_days">您最希望的借款期限？(单选)</string>
+    <string name="ques_money_count">您最希望的借款金额？(单选)</string>
+    <string name="ques_purpose">您的借款用途？</string>
+    <string name="have">有</string>
+    <string name="none">无</string>
 
 </resources>

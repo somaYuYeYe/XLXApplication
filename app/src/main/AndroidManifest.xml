@@ -19,6 +19,7 @@
         </activity>
         <activity
             android:name=".activity.LoginActivity"
+            android:launchMode="singleTask"
             android:theme="@android:style/Theme.Light.NoTitleBar"
             android:windowSoftInputMode="adjustPan" />
         <activity
@@ -36,6 +37,10 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activity.UpdatePwdSuccActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.QuestionActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar"
             android:windowSoftInputMode="adjustPan" />
     </application>

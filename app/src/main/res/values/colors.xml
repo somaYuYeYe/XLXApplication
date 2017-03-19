@@ -8,7 +8,10 @@
     <color name="blue_login_bg">#319FFC</color>
     <color name="blue_title_bg">#319FFC</color>
     <color name="text_color_9">#999999</color>
+    <color name="text_color_6">#666666</color>
+    <color name="text_color_3">#333333</color>
     <color name="gray_line">#cccccc</color>
     <color name="gray_6">#666666</color>
+    <color name="gray_f6">#f6f6f6</color>
 
 </resources>

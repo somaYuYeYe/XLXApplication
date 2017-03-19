@@ -43,7 +43,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         et_pwd = (EditText) findViewById(R.id.et_pwd);
         et_code = (EditText) findViewById(R.id.et_code);
 
-        tv_login = (TextView) findViewById(R.id.et_phone);
+        tv_login = (TextView) findViewById(R.id.tv_login);
         tv_get_code = (TextView) findViewById(R.id.tv_get_code);
         tv_forget_pwd = (TextView) findViewById(R.id.tv_forget_pwd);
 
@@ -75,7 +75,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 }
                 break;
             case R.id.tv_login:
-
+                toQuestion();
                 break;
             case R.id.tv_get_code:
                 break;
@@ -83,6 +83,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 toFindpwd();
                 break;
         }
+    }
+
+    private void toQuestion() {
+        Intent intent = new Intent(this, QuestionActivity.class);
+        startActivity(intent);
     }
 
     private void toFindpwd() {
