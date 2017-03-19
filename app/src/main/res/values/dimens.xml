@@ -14,5 +14,9 @@
 
     <dimen name="btn_h_marg_lr">60dp</dimen>
 
+    <dimen name="title_height">46dp</dimen>
+
+    <dimen name="common_paddleft">20dp</dimen>
+
 
 </resources>

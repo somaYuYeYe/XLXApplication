@@ -5,4 +5,10 @@
     <color name="colorAccent">#FF4081</color>
     <color name="color_white">#FFFFFF</color>
     <color name="login_blue">#3199FD</color>
+    <color name="blue_login_bg">#319FFC</color>
+    <color name="blue_title_bg">#319FFC</color>
+    <color name="text_color_9">#999999</color>
+    <color name="gray_line">#cccccc</color>
+    <color name="gray_6">#666666</color>
+
 </resources>

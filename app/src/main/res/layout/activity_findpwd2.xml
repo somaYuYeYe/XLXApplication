@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        android:background="@color/blue_title_bg"
+        android:gravity="center"
+        android:text="@string/find_pwd_str"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/text_size_title" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_phone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="@string/phone_hint"
+            android:inputType="phone"
+            android:maxLength="11"
+            android:padding="@dimen/common_paddleft"
+            android:textColor="@color/text_color_9"
+            android:textColorHint="@color/text_color_9"
+            android:textSize="@dimen/text_size_common_16" />
+
+        <ImageView
+            android:id="@+id/iv_phone_del"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:padding="@dimen/common_paddleft"
+            android:scaleType="centerInside"
+            android:src="@mipmap/ic_del" />
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/gray_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_code"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="@string/code_hint"
+            android:inputType="phone"
+            android:maxLength="20"
+            android:padding="@dimen/common_paddleft"
+            android:paddingLeft="@dimen/common_paddleft"
+            android:paddingRight="@dimen/common_paddleft"
+            android:textColor="@color/text_color_9"
+            android:textColorHint="@color/text_color_9"
+            android:textSize="@dimen/text_size_common_16" />
+
+        <TextView
+            android:id="@+id/tv_get_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:padding="@dimen/common_paddleft"
+            android:scaleType="centerInside"
+            android:text="@string/get_code"
+            android:textColor="@color/login_blue"
+            android:textColorHint="@color/text_color_9"
+            android:textSize="@dimen/text_size_common_16" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/gray_line" />
+
+    <TextView
+        android:id="@+id/tv_btn"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginRight="22dp"
+        android:layout_marginTop="33dp"
+        android:background="@color/login_blue"
+        android:gravity="center"
+        android:text="@string/next_step"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/text_size_big_18" />
+
+
+</LinearLayout>

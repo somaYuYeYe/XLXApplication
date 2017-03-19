@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        android:background="@color/blue_title_bg"
+        android:gravity="center"
+        android:text="@string/find_pwd_str"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/text_size_title" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="24dp"
+        android:layout_marginTop="48dp"
+        android:scaleType="centerInside"
+        android:src="@mipmap/ic_succ" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/congratulation"
+        android:textColor="@color/gray_6"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_btn"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="22dp"
+        android:layout_marginRight="22dp"
+        android:layout_marginTop="26dp"
+        android:background="@color/login_blue"
+        android:gravity="center"
+        android:text="@string/over_str"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/text_size_big_18" />
+
+
+</LinearLayout>

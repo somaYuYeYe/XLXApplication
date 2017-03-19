@@ -3,31 +3,29 @@ package wza.slx.com.xlxapplication.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
 import wza.slx.com.xlxapplication.R;
 import wza.slx.com.xlxapplication.base.BaseActivity;
 
-public class WelcomeActivity extends BaseActivity {
+/**
+ * Created by homelink on 2017/3/19.
+ */
 
-    private TextView tv_login;
+public class FindPwd2Activity extends BaseActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        initView();
-    }
+        setContentView(R.layout.activity_findpwd2);
 
-    private void initView() {
-        tv_login = (TextView) findViewById(R.id.tv_login);
-        tv_login.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.tv_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO: 2017/3/18
-                Intent intent = new Intent(WelcomeActivity.this, LoginActivity.class);
+                Intent intent = new Intent(FindPwd2Activity.this, UpdatePwdActivity.class);
                 startActivity(intent);
             }
         });
+
     }
 }
