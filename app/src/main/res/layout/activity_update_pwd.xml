@@ -42,7 +42,7 @@
             android:layout_gravity="center_vertical"
             android:padding="@dimen/common_paddleft"
             android:scaleType="centerInside"
-            android:src="@mipmap/ic_del" />
+            android:src="@mipmap/ic_see" />
 
     </LinearLayout>
 
@@ -79,7 +79,7 @@
             android:layout_gravity="center_vertical"
             android:padding="@dimen/common_paddleft"
             android:scaleType="centerInside"
-            android:src="@mipmap/ic_del" />
+            android:src="@mipmap/ic_see" />
 
     </LinearLayout>
 

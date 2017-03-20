@@ -20,5 +20,36 @@
         <item name="android:textSize">@dimen/text_size_common_16</item>
     </style>
 
+    <style name="question_rb">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">19dp</item>
+        <item name="android:layout_marginRight">19dp</item>
+        <item name="android:button">@null</item>
+        <item name="android:drawableLeft">@drawable/selector_rb_btn_bg</item>
+        <item name="android:drawablePadding">20dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:textColor">@color/text_color_6</item>
+        <item name="android:textSize">@dimen/text_size_common_16</item>
+    </style>
+
+    <style name="question_et">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingRight">19dp</item>
+        <item name="android:button">@null</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+        <item name="android:textColor">@color/text_color_9</item>
+        <item name="android:background">@color/gray_f4</item>
+        <item name="android:textSize">@dimen/text_size_common_16</item>
+        <item name="android:gravity">left|top</item>
+    </style>
+
 
 </resources>

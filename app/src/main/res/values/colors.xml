@@ -13,5 +13,6 @@
     <color name="gray_line">#cccccc</color>
     <color name="gray_6">#666666</color>
     <color name="gray_f6">#f6f6f6</color>
+    <color name="gray_f4">#f4f4f4</color>
 
 </resources>

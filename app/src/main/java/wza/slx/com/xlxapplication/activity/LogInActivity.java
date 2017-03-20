@@ -3,13 +3,16 @@ package wza.slx.com.xlxapplication.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import wza.slx.com.xlxapplication.R;
 import wza.slx.com.xlxapplication.base.BaseActivity;
+import wza.slx.com.xlxapplication.utils.Utils;
 
 /**
  * Created by homelink on 2017/3/19.
@@ -68,9 +71,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
                 if (pwdVisi) {
                     et_pwd.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    iv_pwd_switch.setImageResource(R.mipmap.ic_see);
                     pwdVisi = false;
                 } else {
                     et_pwd.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                    iv_pwd_switch.setImageResource(R.mipmap.ic_close);
                     pwdVisi = true;
                 }
                 break;
@@ -86,6 +91,17 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     }
 
     private void toQuestion() {
+        String phone = et_phone.getText().toString();
+        if (!Utils.isMobile(phone)) {
+            Toast.makeText(this, getString(R.string.toast_phone_err), Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String pwd = et_pwd.getText().toString();
+        if (TextUtils.isEmpty(pwd) || pwd.length() < 6 || pwd.length() > 20) {
+            Toast.makeText(this, getString(R.string.toast_pwd_err), Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         Intent intent = new Intent(this, QuestionActivity.class);
         startActivity(intent);
     }

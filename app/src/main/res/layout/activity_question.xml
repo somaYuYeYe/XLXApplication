@@ -40,29 +40,139 @@
                 android:text="@string/ques_credit" />
 
             <RadioGroup
+                android:id="@+id/rg_credit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <RadioButton
                     android:id="@+id/rb_credit_have"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="19dp"
-                    android:layout_marginRight="19dp"
-                    android:background="@drawable/selector_rb_color_bg"
-                    android:button="@null"
-                    android:drawableLeft="@drawable/selector_rb_btn_bg"
-                    android:drawablePadding="4dp"
-                    android:gravity="center_vertical"
-                    android:paddingBottom="12dp"
-                    android:paddingTop="12dp"
-                    android:text="@string/have"
-                    android:textColor="@color/text_color_6" />
+                    style="@style/question_rb"
+                    android:text="@string/have" />
 
+                <RadioButton
+                    android:id="@+id/rb_credit_none"
+                    style="@style/question_rb"
+                    android:text="@string/none" />
 
             </RadioGroup>
 
+            <TextView
+                style="@style/question_title"
+                android:text="@string/ques_loan_history" />
+
+            <RadioGroup
+                android:id="@+id/rg_history"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/rb_history_have"
+                    style="@style/question_rb"
+                    android:text="@string/have" />
+
+                <RadioButton
+                    android:id="@+id/rb_history_none"
+                    style="@style/question_rb"
+                    android:text="@string/none" />
+
+            </RadioGroup>
+
+            <TextView
+                style="@style/question_title"
+                android:text="@string/ques_days" />
+
+            <RadioGroup
+                android:id="@+id/rg_days"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/rb_days_7"
+                    style="@style/question_rb"
+                    android:text="@string/ques_days_7" />
+
+                <RadioButton
+                    android:id="@+id/rb_days_14"
+                    style="@style/question_rb"
+                    android:text="@string/ques_days_14" />
+
+                <RadioButton
+                    android:id="@+id/rb_days_21"
+                    style="@style/question_rb"
+                    android:text="@string/ques_days_21" />
+
+                <RadioButton
+                    android:id="@+id/rb_days_30"
+                    style="@style/question_rb"
+                    android:text="@string/ques_days_30" />
+
+            </RadioGroup>
+
+            <TextView
+                style="@style/question_title"
+                android:text="@string/ques_money_count" />
+
+            <RadioGroup
+                android:id="@+id/rg_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/rb_count_500"
+                    style="@style/question_rb"
+                    android:text="@string/ques_count_500" />
+
+                <RadioButton
+                    android:id="@+id/rb_count_1000"
+                    style="@style/question_rb"
+                    android:text="@string/ques_count_1000" />
+
+                <RadioButton
+                    android:id="@+id/rb_count_2000"
+                    style="@style/question_rb"
+                    android:text="@string/ques_count_2000" />
+
+                <RadioButton
+                    android:id="@+id/rb_count_3000"
+                    style="@style/question_rb"
+                    android:text="@string/ques_count_3000" />
+
+                <RadioButton
+                    android:id="@+id/rb_count_5000"
+                    style="@style/question_rb"
+                    android:text="@string/ques_count_5000" />
+
+            </RadioGroup>
+
+            <TextView
+                style="@style/question_title"
+                android:text="@string/ques_purpose" />
+
+            <EditText
+                android:id="@+id/et_purpose"
+                style="@style/question_et"
+                android:hint="@string/hint_purpose"
+                android:lines="6" />
+
+            <TextView
+                android:id="@+id/tv_commit"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="36dp"
+                android:layout_marginLeft="22dp"
+                android:layout_marginRight="22dp"
+                android:layout_marginTop="18dp"
+                android:background="@color/login_blue"
+                android:gravity="center"
+                android:paddingLeft="60dp"
+                android:paddingRight="60dp"
+                android:text="@string/commit"
+                android:textColor="@color/color_white" />
 
         </LinearLayout>
     </ScrollView>

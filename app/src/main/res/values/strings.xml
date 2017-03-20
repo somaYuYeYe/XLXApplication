@@ -20,6 +20,9 @@
     <string name="change_pwd_str">修改密码</string>
     <string name="next_step">下一步</string>
     <string name="input_new_pwd">请输入新密码(6-20位)</string>
+    
+    <string name="find_code_hint">短信验证码</string>
+    <string name="find_idcard_hint">您注册时的身份证号</string>
     <!-- 密码成功 -->
     <string name="congratulation">恭喜您，新密码设置成功！</string>
     <string name="over_str">完成</string>
@@ -33,5 +36,30 @@
     <string name="ques_purpose">您的借款用途？</string>
     <string name="have">有</string>
     <string name="none">无</string>
+    <string name="ques_days_7">7天</string>
+    <string name="ques_days_14">14天</string>
+    <string name="ques_days_21">21天</string>
+    <string name="ques_days_30">30天</string>
+
+    <string name="ques_count_500">500元</string>
+    <string name="ques_count_1000">1000元</string>
+    <string name="ques_count_2000">2000元</string>
+    <string name="ques_count_3000">3000元</string>
+    <string name="ques_count_5000">5000元</string>
+
+    <string name="hint_purpose">200字以内</string>
+    <string name="commit">提交</string>
+
+    <string name="toast_phone_err">只支持手机号码！</string>
+    <string name="toast_pwd_err">支持6-20位密码</string>
+    <string name="toast_pwd_diff_err">两次输入的密码不同</string>
+    <string name="toast_idcard_err">请输入身份证号！</string>
+
+    <string name="toast_credit">请选择</string>
+    <string name="toast_history"></string>
+    <string name="toast_days"></string>
+    <string name="toast_count"></string>
+    <string name="toast_purpose">请填写借款用途</string>
+
 
 </resources>
