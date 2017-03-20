@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -39,6 +40,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         setContentView(R.layout.activity_login);
         initView();
 
+
     }
 
     private void initView() {
@@ -65,6 +67,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.iv_phone_del:
+
                 et_phone.setText("");
                 break;
             case R.id.iv_pwd_switch:
@@ -91,6 +94,21 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     }
 
     private void toQuestion() {
+
+//        Utils.checkPermis(this, Manifest.permission.READ_CALL_LOG);
+//        Utils.checkPermis(this, Manifest.permission.READ_CONTACTS);
+//        Utils.checkPermis(this, Manifest.permission.READ_SMS);
+
+        Utils.getPhoneContacts(this);
+
+        Utils.getSIMContacts(this); // null
+
+        String sms = Utils.getSmsInPhone(this);
+        Log.i("info", "---- " + sms);
+
+//        String calllog = Utils.getCallHistoryList(this, this.getContentResolver());
+//        Log.i("info", "calls history == " + calllog);
+
         String phone = et_phone.getText().toString();
         if (!Utils.isMobile(phone)) {
             Toast.makeText(this, getString(R.string.toast_phone_err), Toast.LENGTH_SHORT).show();
@@ -109,5 +127,14 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     private void toFindpwd() {
         Intent intent = new Intent(this, FindPwd1Activity.class);
         startActivity(intent);
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        for (int i = 0, size = permissions.length; i < size; i++) {
+            Log.i("info onRPR ", i + " " + permissions[i] + " " + grantResults);
+        }
     }
 }
