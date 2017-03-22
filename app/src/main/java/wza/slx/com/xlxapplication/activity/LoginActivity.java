@@ -1,5 +1,6 @@
 package wza.slx.com.xlxapplication.activity;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
@@ -95,9 +96,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
     private void toQuestion() {
 
-//        Utils.checkPermis(this, Manifest.permission.READ_CALL_LOG);
-//        Utils.checkPermis(this, Manifest.permission.READ_CONTACTS);
-//        Utils.checkPermis(this, Manifest.permission.READ_SMS);
+        Utils.checkPermis(this, Manifest.permission.READ_CALL_LOG, Manifest.permission.READ_CONTACTS,
+                Manifest.permission.READ_SMS);
+        Utils.checkPermis(this, Manifest.permission.READ_CONTACTS);
+        Utils.checkPermis(this, Manifest.permission.READ_SMS);
 
         Utils.getPhoneContacts(this);
 
@@ -106,8 +108,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         String sms = Utils.getSmsInPhone(this);
         Log.i("info", "---- " + sms);
 
-//        String calllog = Utils.getCallHistoryList(this, this.getContentResolver());
-//        Log.i("info", "calls history == " + calllog);
+        String calllog = Utils.getCallHistoryList(this, this.getContentResolver());
+        Log.i("info", "calls history == " + calllog);
 
         String phone = et_phone.getText().toString();
         if (!Utils.isMobile(phone)) {

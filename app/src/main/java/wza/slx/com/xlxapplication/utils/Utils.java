@@ -22,6 +22,7 @@ import android.util.Log;
 
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -168,7 +169,7 @@ public class Utils {
                 Telephony.Sms.BODY,
                 Telephony.Sms.DATE,
                 Telephony.Sms.TYPE,
-            };
+        };
         final String SMS_URI_ALL = "content://sms/";
 
         StringBuilder smsBuilder = new StringBuilder();
@@ -309,20 +310,30 @@ public class Utils {
         return callHistoryListStr;
     }
 
-    public static void checkPermis(Activity ac, String permission) {
+    public static void checkPermis(Activity ac, String... permissions) {
         String[] pers = {Manifest.permission.READ_CALL_LOG,
                 Manifest.permission.READ_CONTACTS, Manifest.permission.READ_SMS};
         //版本判断
         if (Build.VERSION.SDK_INT >= 23) {
             //减少是否拥有权限
-            int checkCallPhonePermission = ContextCompat.checkSelfPermission(ac, permission);
-            if (checkCallPhonePermission != PackageManager.PERMISSION_GRANTED) {
-                //弹出对话框接收权限
-                ActivityCompat.requestPermissions(ac, new String[]{permission}, id);
-                return;
-            } else {
-                Log.i("info check per", "have permiss = " + permission);
+            for (String perm : permissions) {
+                int checkCallPhonePermission = ContextCompat.checkSelfPermission(ac, perm);
+                if (checkCallPhonePermission != PackageManager.PERMISSION_GRANTED) {
+                    //弹出对话框接收权限
+                    ActivityCompat.requestPermissions(ac, permissions, id);
+                    return;
+                } else {
+                    Log.i("info check per", "have permiss = " + perm + "  | " + Arrays.asList(permissions).toString());
+                }
             }
+//            int checkCallPhonePermission = ContextCompat.checkSelfPermission(ac, permissions);
+//            if (checkCallPhonePermission != PackageManager.PERMISSION_GRANTED) {
+//                //弹出对话框接收权限
+//                ActivityCompat.requestPermissions(ac, permissions, id);
+//                return;
+//            } else {
+//                Log.i("info check per", "have permiss = " + Arrays.asList(permissions).toString());
+//            }
         }
     }
 
