@@ -9,7 +9,6 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 /**
- * Created by huangjin on 2016/8/26.
  *
  */
 public class LogInterceptor implements Interceptor {

@@ -1,11 +1,6 @@
 package wza.slx.com.xlxapplication.net.http;
 
 
-import com.freelxl.baselibrary.http.builder.GetRequestBuilder;
-import com.freelxl.baselibrary.http.builder.PostRequestBuilder;
-import com.freelxl.baselibrary.http.builder.PutRequestBuilder;
-import com.freelxl.baselibrary.http.interceptor.LogInterceptor;
-import com.freelxl.baselibrary.http.interceptor.MockInterceptor;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -13,6 +8,11 @@ import java.util.concurrent.TimeUnit;
 import okhttp3.Call;
 import okhttp3.Dispatcher;
 import okhttp3.OkHttpClient;
+import wza.slx.com.xlxapplication.net.http.builder.GetRequestBuilder;
+import wza.slx.com.xlxapplication.net.http.builder.PostRequestBuilder;
+import wza.slx.com.xlxapplication.net.http.builder.PutRequestBuilder;
+import wza.slx.com.xlxapplication.net.http.interceptor.LogInterceptor;
+import wza.slx.com.xlxapplication.net.http.interceptor.MockInterceptor;
 
 /**
  * Created by huangjin on 2016/8/24.

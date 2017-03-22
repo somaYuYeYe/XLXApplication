@@ -22,7 +22,6 @@ import okio.BufferedSource;
 import okio.Okio;
 
 /**
- * Created by huangjin on 2016/8/26.
  * <p>
  * 本地请求模拟
  * <p>

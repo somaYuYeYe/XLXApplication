@@ -1,13 +1,13 @@
 package wza.slx.com.xlxapplication.net.http.callback;
 
-import com.freelxl.baselibrary.http.exception.HttpException;
-import com.freelxl.baselibrary.http.parser.BaseParser;
 
 import java.io.IOException;
 
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
+import wza.slx.com.xlxapplication.net.http.exception.HttpException;
+import wza.slx.com.xlxapplication.net.http.parser.BaseParser;
 
 /**
  * http请求工作线程回调

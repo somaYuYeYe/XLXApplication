@@ -4,7 +4,6 @@ import android.os.Handler;
 import android.os.Looper;
 
 /**
- * Created by huangjin on 2016/8/25.
  *
  */
 public abstract class OkProgressCallback {

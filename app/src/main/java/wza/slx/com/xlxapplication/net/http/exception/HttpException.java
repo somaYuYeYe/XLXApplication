@@ -1,7 +1,6 @@
 package wza.slx.com.xlxapplication.net.http.exception;
 
 /**
- * Created by jin.h on 2016/8/28.
  *
  */
 
