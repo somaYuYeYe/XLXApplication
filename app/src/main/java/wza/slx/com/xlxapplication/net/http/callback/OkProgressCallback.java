@@ -1,0 +1,25 @@
+package wza.slx.com.xlxapplication.net.http.callback;
+
+import android.os.Handler;
+import android.os.Looper;
+
+/**
+ * Created by huangjin on 2016/8/25.
+ *
+ */
+public abstract class OkProgressCallback {
+
+    private static Handler sHandler = new Handler(Looper.getMainLooper());
+
+    public void onOKProgress(final long current, final long total){
+        sHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                onProgress(current,total);
+            }
+        });
+    };
+
+    public abstract void onProgress(long current,long total);
+
+}

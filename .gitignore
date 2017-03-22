@@ -44,6 +44,7 @@ gradlew.bat
 import-summary.txt
 gradle
 .idea
+/.idea
 *.iml
 /ziroom-baselibrary-android
 /ziroom-commonlibrary-android
