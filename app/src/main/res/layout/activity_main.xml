@@ -13,7 +13,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@mipmap/home_bg"
+            android:background="@mipmap/homebg4"
             android:orientation="vertical">
 
             <TextView
@@ -46,7 +46,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:lineSpacingMultiplier="1.2"
-                android:paddingBottom="@dimen/app_desc_padbottom"
                 android:paddingLeft="@dimen/app_desc_padlr"
                 android:paddingRight="@dimen/app_desc_padlr"
                 android:paddingTop="@dimen/app_desc_padtop"
@@ -68,6 +67,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginLeft="@dimen/btn_h_marg_lr"
                 android:layout_marginRight="@dimen/btn_h_marg_lr"
+                android:layout_marginTop="22dp"
                 android:background="@drawable/bg_login"
                 android:gravity="center"
                 android:paddingBottom="4dp"
