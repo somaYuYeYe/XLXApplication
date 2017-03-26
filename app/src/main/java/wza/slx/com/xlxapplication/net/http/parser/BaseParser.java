@@ -1,6 +1,7 @@
 package wza.slx.com.xlxapplication.net.http.parser;
 
 import okhttp3.Response;
+import wza.slx.com.xlxapplication.utils.LogUtil;
 
 public abstract class BaseParser<T> {
 
@@ -10,6 +11,7 @@ public abstract class BaseParser<T> {
 
     public T parseResponse(Response response) throws Exception {
         code = response.code();
+        LogUtil.i("http", " code = " + code);
         return parse(response);
     }
 

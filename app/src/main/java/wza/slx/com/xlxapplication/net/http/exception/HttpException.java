@@ -1,9 +1,5 @@
 package wza.slx.com.xlxapplication.net.http.exception;
 
-/**
- *
- */
-
 public class HttpException extends Exception {
 
     private int statusCode;

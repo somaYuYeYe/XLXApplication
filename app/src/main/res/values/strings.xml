@@ -47,19 +47,21 @@
     <string name="ques_count_3000">3000元</string>
     <string name="ques_count_5000">5000元</string>
 
-    <string name="hint_purpose">200字以内</string>
+    <string name="hint_purpose">请填写您的借款用途</string>
     <string name="commit">提交</string>
 
     <string name="toast_phone_err">只支持手机号码！</string>
     <string name="toast_pwd_err">支持6-20位密码</string>
+    <string name="toast_code_err">请输入正确的验证码!</string>
+    <string name="toast_cb_err">请勾选并同意协议</string>
     <string name="toast_pwd_diff_err">两次输入的密码不同</string>
     <string name="toast_idcard_err">请输入身份证号！</string>
 
-    <string name="toast_credit">请选择</string>
-    <string name="toast_history"></string>
-    <string name="toast_days"></string>
-    <string name="toast_count"></string>
-    <string name="toast_purpose">请填写借款用途</string>
+    <string name="toast_ques_credit">请选择您是否有信用卡</string>
+    <string name="toast_ques_loan_history">请选择您是否在其他平台借过款</string>
+    <string name="toast_ques_days">请选择您最希望的借款期限</string>
+    <string name="toast_ques_money_count">请选择您最希望的借款金额</string>
+    <string name="toast_ques_purpose">请填写您的借款用途</string>
 
 
 </resources>

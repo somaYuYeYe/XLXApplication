@@ -24,6 +24,8 @@ import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -337,5 +339,50 @@ public class Utils {
         }
     }
 
+    public static void checkPermi(Activity ac, String... permissions) {
+        String[] pers = {Manifest.permission.READ_CALL_LOG,
+                Manifest.permission.READ_CONTACTS, Manifest.permission.READ_SMS};
+        //版本判断
+        if (Build.VERSION.SDK_INT >= 23) {
+            //减少是否拥有权限
+            for (String perm : permissions) {
+                int checkCallPhonePermission = ContextCompat.checkSelfPermission(ac, perm);
+                if (checkCallPhonePermission != PackageManager.PERMISSION_GRANTED) {
+                    //弹出对话框接收权限
+                    ActivityCompat.requestPermissions(ac, permissions, id);
+                    return;
+                } else {
+                    Log.i("info check per", "have permiss = " + perm + "  | " + Arrays.asList(permissions).toString());
+                }
+            }
+//            int checkCallPhonePermission = ContextCompat.checkSelfPermission(ac, permissions);
+//            if (checkCallPhonePermission != PackageManager.PERMISSION_GRANTED) {
+//                //弹出对话框接收权限
+//                ActivityCompat.requestPermissions(ac, permissions, id);
+//                return;
+//            } else {
+//                Log.i("info check per", "have permiss = " + Arrays.asList(permissions).toString());
+//            }
+        }
+    }
+
+    public static Map<String, String> ConvertObjMap2String(Map<String, Object> map) {
+
+        Map<String, String> newMap = new HashMap<String, String>();
+        for (Map.Entry<String, Object> entry : map.entrySet()) {
+            if (entry.getValue() instanceof String) {
+                newMap.put(entry.getKey(), (String) entry.getValue());
+            } else if (entry.getValue() instanceof Integer) {
+                newMap.put(entry.getKey(), String.valueOf(entry.getValue()));
+            } else if (entry == null || entry.getValue() == null) {
+                LogUtil.e("info", "Utils.ConvertObjMap2String=== null");
+            } else {
+                newMap.put(entry.getKey(), String.valueOf(entry.getValue()));
+                LogUtil.e("info", "Utils.ConvertObjMap2String===" + entry.getValue() + "======" + entry.getValue() == null ? "null" : entry.getValue().getClass());
+            }
+        }
+
+        return newMap;
+    }
 
 }

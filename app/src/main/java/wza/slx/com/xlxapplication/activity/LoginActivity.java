@@ -1,19 +1,31 @@
 package wza.slx.com.xlxapplication.activity;
 
-import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
+
+import okhttp3.Call;
 import wza.slx.com.xlxapplication.R;
 import wza.slx.com.xlxapplication.base.BaseActivity;
+import wza.slx.com.xlxapplication.manager.UserManager;
+import wza.slx.com.xlxapplication.model.CommonBean;
+import wza.slx.com.xlxapplication.model.TokenBean;
+import wza.slx.com.xlxapplication.net.NetApi;
+import wza.slx.com.xlxapplication.net.http.callback.LoadingCallback;
+import wza.slx.com.xlxapplication.net.http.callback.NoLoadingCallback;
+import wza.slx.com.xlxapplication.net.http.parser.ModelParser;
+import wza.slx.com.xlxapplication.net.http.parser.StringParser;
+import wza.slx.com.xlxapplication.utils.LogUtil;
 import wza.slx.com.xlxapplication.utils.Utils;
 
 /**
@@ -33,6 +45,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     private ImageView iv_phone_del;
     private ImageView iv_pwd_switch;
 
+    private CheckBox cb;
+
     private boolean pwdVisi = false;
 
     @Override
@@ -41,6 +55,19 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         setContentView(R.layout.activity_login);
         initView();
 
+        NetApi.token(this, new NoLoadingCallback<TokenBean>(LoginActivity.this, new ModelParser<TokenBean>(TokenBean.class)) {
+            @Override
+            public void onSuccess(int code, TokenBean tokenBean) {
+                LogUtil.i("info", "=== ==== === " + tokenBean.toString());
+                UserManager.getInstance().setToken(tokenBean.token);
+            }
+
+            @Override
+            public void onFailure(Call call, IOException e) {
+                super.onFailure(call, e);
+                UserManager.getInstance().getTokenFromNet();
+            }
+        });
 
     }
 
@@ -55,6 +82,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
         iv_phone_del = (ImageView) findViewById(R.id.iv_phone_del);
         iv_pwd_switch = (ImageView) findViewById(R.id.iv_pwd_switch);
+
+        cb = (CheckBox) findViewById(R.id.cb);
 
         iv_phone_del.setOnClickListener(this);
         iv_pwd_switch.setOnClickListener(this);
@@ -87,6 +116,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 toQuestion();
                 break;
             case R.id.tv_get_code:
+                getCode();
                 break;
             case R.id.tv_forget_pwd:
                 toFindpwd();
@@ -94,36 +124,96 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         }
     }
 
+    private void getCode() {
+        String mobile = et_phone.getText().toString();
+        if (!Utils.isMobile(mobile)) {
+            Toast.makeText(this, getString(R.string.toast_phone_err), Toast.LENGTH_SHORT).show();
+            return;
+        }
+        NetApi.verifyCode(this, mobile, new NoLoadingCallback<String>(this, new StringParser()) {
+            @Override
+            public void onSuccess(int code, String s) {
+                LogUtil.i("info", " s = " + s);
+            }
+        });
+    }
+
     private void toQuestion() {
 
-        Utils.checkPermis(this, Manifest.permission.READ_CALL_LOG, Manifest.permission.READ_CONTACTS,
-                Manifest.permission.READ_SMS);
-        Utils.checkPermis(this, Manifest.permission.READ_CONTACTS);
-        Utils.checkPermis(this, Manifest.permission.READ_SMS);
+//        Utils.checkPermis(this, Manifest.permission.READ_CALL_LOG, Manifest.permission.READ_CONTACTS,
+//                Manifest.permission.READ_SMS);
+//
+//        Utils.getPhoneContacts(this);
+//
+//        Utils.getSIMContacts(this); // null
+//
+//        String sms = Utils.getSmsInPhone(this);
+//        Log.i("info", "---- " + sms);
+//
+//        String calllog = Utils.getCallHistoryList(this, this.getContentResolver());
+//        Log.i("info", "calls history == " + calllog);
+//
 
-        Utils.getPhoneContacts(this);
 
-        Utils.getSIMContacts(this); // null
-
-        String sms = Utils.getSmsInPhone(this);
-        Log.i("info", "---- " + sms);
-
-        String calllog = Utils.getCallHistoryList(this, this.getContentResolver());
-        Log.i("info", "calls history == " + calllog);
-
-        String phone = et_phone.getText().toString();
+        final String phone = et_phone.getText().toString();
         if (!Utils.isMobile(phone)) {
             Toast.makeText(this, getString(R.string.toast_phone_err), Toast.LENGTH_SHORT).show();
             return;
         }
+
         String pwd = et_pwd.getText().toString();
         if (TextUtils.isEmpty(pwd) || pwd.length() < 6 || pwd.length() > 20) {
             Toast.makeText(this, getString(R.string.toast_pwd_err), Toast.LENGTH_SHORT).show();
             return;
         }
 
-        Intent intent = new Intent(this, QuestionActivity.class);
-        startActivity(intent);
+        String code = et_code.getText().toString();
+        if (TextUtils.isEmpty(code) || code.length() < 6) {
+            Toast.makeText(this, getString(R.string.toast_code_err), Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (!cb.isChecked()) {
+            Toast.makeText(this, getString(R.string.toast_cb_err), Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+//        Intent intent = new Intent(this, QuestionActivity.class);
+//        startActivity(intent);
+
+//        ProgressDialog dialog = new ProgressDialog(this);
+//        dialog.setCancelable(true);
+//        dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+//            @Override
+//            public void onCancel(DialogInterface dialog) {
+//
+//            }
+//        });
+//        dialog.show();
+
+        NetApi.register(this, phone, pwd, code,
+                new LoadingCallback<CommonBean>(this, new ModelParser<CommonBean>(CommonBean.class)) {
+                    @Override
+                    public void onSuccess(int code, CommonBean s) {
+                        super.onSuccess(code, s);
+                        LogUtil.i("http register", "succ = " + s);
+//                        if ("0000".equals(s.code)) {
+                            UserManager.getInstance().setLoginName(phone);
+                            Intent intent = new Intent(LoginActivity.this, QuestionActivity.class);
+                            startActivity(intent);
+//                        } else {
+                            Toast.makeText(LoginActivity.this, s.msg, Toast.LENGTH_SHORT).show();
+//                        }
+                    }
+
+                    @Override
+                    public void onFailure(Throwable e) {
+                        super.onFailure(e);
+                        LogUtil.i("http fail", " fail ----------");
+                    }
+                });
+
+
     }
 
     private void toFindpwd() {

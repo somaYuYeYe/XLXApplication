@@ -11,6 +11,7 @@ import okhttp3.Callback;
 import okhttp3.Response;
 import wza.slx.com.xlxapplication.net.http.exception.HttpException;
 import wza.slx.com.xlxapplication.net.http.parser.BaseParser;
+import wza.slx.com.xlxapplication.utils.LogUtil;
 
 /**
  * http请求UI线程回调
@@ -42,7 +43,10 @@ public abstract class OkCallback<T> implements Callback {
     @Override
     public void onResponse(Call call,final Response response) {
         try {
+            LogUtil.i("wz info","aaaa");
             final T t = mParser.parseResponse(response);
+            LogUtil.i("wz info","bbbbb");
+
             final int code = mParser.getCode();
             if (response.isSuccessful()) {
                 sHandler.post(new Runnable() {
@@ -60,9 +64,12 @@ public abstract class OkCallback<T> implements Callback {
                 });
             }
         } catch (final Exception e) {
+            LogUtil.i("wz info","ccccc");
+
             sHandler.post(new Runnable() {
                 @Override
                 public void run() {
+                    LogUtil.i("wz info","//// dddddd");
                     onFailure(e);
                 }
             });

@@ -11,6 +11,10 @@ import android.widget.Toast;
 
 import wza.slx.com.xlxapplication.R;
 import wza.slx.com.xlxapplication.base.BaseActivity;
+import wza.slx.com.xlxapplication.model.CommonBean;
+import wza.slx.com.xlxapplication.net.NetApi;
+import wza.slx.com.xlxapplication.net.http.callback.LoadingCallback;
+import wza.slx.com.xlxapplication.net.http.parser.ModelParser;
 
 public class UpdatePwdActivity extends BaseActivity implements View.OnClickListener {
 
@@ -22,10 +26,18 @@ public class UpdatePwdActivity extends BaseActivity implements View.OnClickListe
     private ImageView iv_pwd_switch2;
     private boolean pwdVisi2 = false;
 
+    private String phone;
+    private String idCard;
+    private String verifyCode;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_pwd);
+
+        phone = getIntent().getStringExtra("phone");
+        idCard = getIntent().getStringExtra("idCard");
+        verifyCode = getIntent().getStringExtra("verifyCode");
 
         findViewById(R.id.tv_btn).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +84,7 @@ public class UpdatePwdActivity extends BaseActivity implements View.OnClickListe
                 break;
         }
     }
+
     private void next() {
         String pwd1 = et_pwd1.getText().toString();
         String pwd2 = et_pwd2.getText().toString();
@@ -83,7 +96,21 @@ public class UpdatePwdActivity extends BaseActivity implements View.OnClickListe
             Toast.makeText(this, getString(R.string.toast_pwd_err), Toast.LENGTH_SHORT).show();
             return;
         }
-        Intent intent = new Intent(UpdatePwdActivity.this, UpdatePwdSuccActivity.class);
-        startActivity(intent);
+
+        NetApi.updatepwd(this, phone, idCard, verifyCode, pwd1, pwd2, new LoadingCallback<CommonBean>(this, new ModelParser<CommonBean>(CommonBean.class)) {
+            @Override
+            public void onSuccess(int code, CommonBean commonBean) {
+                super.onSuccess(code, commonBean);
+                // if ("0000".equals(commonBean.code)) {
+                Intent intent = new Intent(UpdatePwdActivity.this, UpdatePwdSuccActivity.class);
+                startActivity(intent);
+                //  } else {
+                //   Toast.makeText(FindPwd1Activity.this, commonBean.msg, Toast.LENGTH_SHORT).show();
+                //
+                //  }
+            }
+        });
+
+
     }
 }
