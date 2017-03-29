@@ -57,9 +57,9 @@ android {
         }
         release {
             buildConfigField "boolean", "LOG_DEBUG", "false"
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
-            shrinkResources true
+            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
+            shrinkResources false
             signingConfig signingConfigs.release
             manifestPlaceholders = [label       : "@string/app_name",
                                     ]

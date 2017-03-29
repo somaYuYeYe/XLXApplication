@@ -206,59 +206,62 @@ public class Utils {
                     null, "date desc"); // 获取手机内部短信
 
             if (cur.moveToFirst()) {
-//                int index_Address = cur.getColumnIndex("address");
-//                int index_Person = cur.getColumnIndex("person");
-//                int index_Body = cur.getColumnIndex("body");
-//                int index_Date = cur.getColumnIndex("date");
-//                int index_Type = cur.getColumnIndex("type");
-//
-//                do {
-//                    String strAddress = cur.getString(index_Address);
-//                    int intPerson = cur.getInt(index_Person);
-//                    String strbody = cur.getString(index_Body);
-//                    long longDate = cur.getLong(index_Date);
-//                    int intType = cur.getInt(index_Type);
-//
-////                    SimpleDateFormat dateFormat = new SimpleDateFormat(
-////                            "yyyy-MM-dd hh:mm:ss");
-////                    Date d = new Date(longDate);
-////                    String strDate = dateFormat.format(d);
-////
-////                    String strType = "";
-////                    if (intType == 1) {
-////                        strType = "接收";
-////                    } else if (intType == 2) {
-////                        strType = "发送";
-////                    } else {
-////                        strType = "null";
-////                    }
-//                    SmsRecard sms = new SmsRecard();
-//                    sms.addresss = strAddress;
-//                    sms.contect = strbody;
-//                    sms.sendTime = longDate + "";
-//                    sms.type = intType + "";
-//                    list.add(sms);
-//
-//                } while (cur.moveToNext());
-//
-//                if (!cur.isClosed()) {
-//                    cur.close();
-//                    cur = null;
-//                }
+                int index_Address = cur.getColumnIndex("address");
+                int index_Person = cur.getColumnIndex("person");
+                int index_Body = cur.getColumnIndex("body");
+                int index_Date = cur.getColumnIndex("date");
+                int index_Type = cur.getColumnIndex("type");
 
-                SmsRecard sms = new SmsRecard();
-                sms.addresss = "10086123456";
-                sms.contect = "测试";
-                sms.sendTime = (System.currentTimeMillis() - 1000 * 60 * 60 * 12) + "";
-                sms.type = 1 + "";
-                list.add(sms);
+                do {
+                    String strAddress = cur.getString(index_Address);
+                    int intPerson = cur.getInt(index_Person);
+                    String strbody = cur.getString(index_Body);
+                    long longDate = cur.getLong(index_Date);
+                    int intType = cur.getInt(index_Type);
+
+//                    SimpleDateFormat dateFormat = new SimpleDateFormat(
+//                            "yyyy-MM-dd hh:mm:ss");
+//                    Date d = new Date(longDate);
+//                    String strDate = dateFormat.format(d);
+//
+//                    String strType = "";
+//                    if (intType == 1) {
+//                        strType = "接收";
+//                    } else if (intType == 2) {
+//                        strType = "发送";
+//                    } else {
+//                        strType = "null";
+//                    }
+                    SmsRecard sms = new SmsRecard();
+                    sms.addresss = strAddress;
+                    sms.contect = strbody;
+                    sms.sendTime = longDate + "";
+                    sms.type = intType + "";
+                    list.add(sms);
+
+                } while (cur.moveToNext());
+
+                if (!cur.isClosed()) {
+                    cur.close();
+                    cur = null;
+                }
+
+//                SmsRecard sms = new SmsRecard();
+//                sms.addresss = "10086123456";
+//                sms.contect = "测试";
+//                sms.sendTime = (System.currentTimeMillis() - 1000 * 60 * 60 * 12) + "";
+//                sms.type = 1 + "";
+//                list.add(sms);
             } else {
                 LogUtil.i("info 无短信记录", " no result!");
             } // end if
 
             LogUtil.i("info ", " getSmsInPhone has executed!");
 
-            cur.close();
+            if (!cur.isClosed()) {
+                cur.close();
+                cur = null;
+            }
 
         } catch (SQLiteException ex) {
             LogUtil.i("SQLiteException in getSmsInPhone", ex.getMessage());
