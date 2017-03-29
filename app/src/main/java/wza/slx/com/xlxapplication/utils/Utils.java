@@ -241,7 +241,7 @@ public class Utils {
 
                 } while (cur.moveToNext());
 
-                if (!cur.isClosed()) {
+                if (cur != null && !cur.isClosed()) {
                     cur.close();
                     cur = null;
                 }
@@ -258,7 +258,7 @@ public class Utils {
 
             LogUtil.i("info ", " getSmsInPhone has executed!");
 
-            if (!cur.isClosed()) {
+            if (cur != null && !cur.isClosed()) {
                 cur.close();
                 cur = null;
             }
@@ -350,7 +350,10 @@ public class Utils {
             }
         }
 
-        cs.close();
+        if (cs != null && !cs.isClosed()) {
+            cs.close();
+            cs = null;
+        }
 
         return list;
     }

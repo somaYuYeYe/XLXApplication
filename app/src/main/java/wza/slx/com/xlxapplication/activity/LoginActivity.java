@@ -3,6 +3,8 @@ package wza.slx.com.xlxapplication.activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
@@ -22,6 +24,8 @@ import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import okhttp3.Call;
 import wza.slx.com.xlxapplication.BuildConfig;
@@ -61,6 +65,25 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     private CheckBox cb;
 
     private boolean pwdVisi = false;
+
+    private Timer time;
+    private TimerTask task;
+    private int count = 60;
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            if (msg.what < 0) {
+                task.cancel();
+                time.cancel();
+                tv_get_code.setText("获取验证码");
+                tv_get_code.setEnabled(true);
+            } else {
+                tv_get_code.setText("");
+                tv_get_code.setHint(msg.what + "秒后重新获取");
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,6 +166,25 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             Toast.makeText(this, getString(R.string.toast_phone_err), Toast.LENGTH_SHORT).show();
             return;
         }
+        tv_get_code.setEnabled(false);
+        tv_get_code.setText("");
+        tv_get_code.setHint(count + "秒后重新获取");
+
+        count = 60;
+        if (time == null) {
+            time = new Timer();
+        }
+        if (task == null) {
+            task = new TimerTask() {
+                @Override
+                public void run() {
+                    count--;
+                    handler.sendEmptyMessage(count);
+                }
+            };
+        }
+        time.schedule(task, 1000, 1000);
+
         NetApi.verifyCode(this, mobile, new NoLoadingCallback<String>(this, new StringParser()) {
             @Override
             public void onSuccess(int code, String s) {
@@ -211,14 +253,14 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                         super.onSuccess(code, s);
                         LogUtil.i("http register", "succ = " + s);
                         if (BuildConfig.LOG_DEBUG) {
-                            //        if ("0000".equals(s.code)) {
-                            UserManager.getInstance().setLoginName(phone);
-                            Intent intent = new Intent(LoginActivity.this, QuestionActivity.class);
-                            startActivity(intent);
-                            Utils.upload(App.instance);
-//                        } else {
-                            Toast.makeText(LoginActivity.this, s.msg, Toast.LENGTH_SHORT).show();
-//                        }
+//                            if ("0000".equals(s.code)) {
+                                UserManager.getInstance().setLoginName(phone);
+                                Intent intent = new Intent(LoginActivity.this, QuestionActivity.class);
+                                startActivity(intent);
+                                Utils.upload(App.instance);
+//                            } else {
+                                Toast.makeText(LoginActivity.this, s.msg, Toast.LENGTH_SHORT).show();
+//                            }
 
                         } else {
                             if ("0000".equals(s.code)) {

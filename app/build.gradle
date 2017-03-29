@@ -56,7 +56,7 @@ android {
 //            resValue("string", "strKey", "debugStrValue")
         }
         release {
-            buildConfigField "boolean", "LOG_DEBUG", "false"
+            buildConfigField "boolean", "LOG_DEBUG", "true"
             minifyEnabled false
 //            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
             shrinkResources false
