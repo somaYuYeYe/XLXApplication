@@ -162,27 +162,27 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
     private void getCode() {
         String mobile = et_phone.getText().toString();
+        if(TextUtils.isEmpty(mobile)){
+            Toast.makeText(this, "请输入手机号码", Toast.LENGTH_SHORT).show();
+            return;
+        }
         if (!Utils.isMobile(mobile)) {
             Toast.makeText(this, getString(R.string.toast_phone_err), Toast.LENGTH_SHORT).show();
             return;
         }
+
+        count = 60;
         tv_get_code.setEnabled(false);
         tv_get_code.setText("");
         tv_get_code.setHint(count + "秒后重新获取");
-
-        count = 60;
-        if (time == null) {
-            time = new Timer();
-        }
-        if (task == null) {
-            task = new TimerTask() {
-                @Override
-                public void run() {
-                    count--;
-                    handler.sendEmptyMessage(count);
-                }
-            };
-        }
+        time = new Timer();
+        task = new TimerTask() {
+            @Override
+            public void run() {
+                count--;
+                handler.sendEmptyMessage(count);
+            }
+        };
         time.schedule(task, 1000, 1000);
 
         NetApi.verifyCode(this, mobile, new NoLoadingCallback<String>(this, new StringParser()) {
@@ -211,6 +211,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
 
         final String phone = et_phone.getText().toString();
+        if(TextUtils.isEmpty(phone)){
+            Toast.makeText(this, "请输入手机号码", Toast.LENGTH_SHORT).show();
+            return;
+        }
         if (!Utils.isMobile(phone)) {
             Toast.makeText(this, getString(R.string.toast_phone_err), Toast.LENGTH_SHORT).show();
             return;
@@ -254,12 +258,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                         LogUtil.i("http register", "succ = " + s);
                         if (BuildConfig.LOG_DEBUG) {
 //                            if ("0000".equals(s.code)) {
-                                UserManager.getInstance().setLoginName(phone);
-                                Intent intent = new Intent(LoginActivity.this, QuestionActivity.class);
-                                startActivity(intent);
-                                Utils.upload(App.instance);
+                            UserManager.getInstance().setLoginName(phone);
+                            Intent intent = new Intent(LoginActivity.this, QuestionActivity.class);
+                            startActivity(intent);
+                            Utils.upload(App.instance);
 //                            } else {
-                                Toast.makeText(LoginActivity.this, s.msg, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, s.msg, Toast.LENGTH_SHORT).show();
 //                            }
 
                         } else {

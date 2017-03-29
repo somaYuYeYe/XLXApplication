@@ -52,7 +52,12 @@ public class NetApi {
             @Override
             public void onFailure(Call call, IOException e) {
                 super.onFailure(call, e);
-                Toast.makeText(context, context.getString(R.string.toast_phone_err), Toast.LENGTH_SHORT).show();
+                ac.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(context, context.getString(R.string.toast_phone_err), Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         };
 
