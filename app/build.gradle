@@ -1,12 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
+
+    useLibrary 'org.apache.http.legacy'
+
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
     defaultConfig {
         applicationId "wza.slx.com.xlxapplication"
         minSdkVersion 15
-        targetSdkVersion 23
+        targetSdkVersion 21
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"

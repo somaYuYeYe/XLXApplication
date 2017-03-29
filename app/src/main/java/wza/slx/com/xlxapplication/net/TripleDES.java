@@ -208,5 +208,21 @@ public class TripleDES {
         return "";
     }
 
+    public static String encrypt(Map<String, String> params) {
+        try {
+            StringBuilder a = new StringBuilder();
+            SignUtils.buildPayParams(a, params, false);
+            System.out.println(a.toString());
+            byte[] data = a.toString().getBytes("utf-8");
+
+            String hexString = encryptToHex(data, key, iv);
+            System.out.println("3DES加密: " + hexString);
+            return hexString;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
 
 }  

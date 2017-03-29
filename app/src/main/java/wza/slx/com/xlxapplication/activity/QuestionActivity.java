@@ -15,6 +15,7 @@ import wza.slx.com.xlxapplication.model.CommonBean;
 import wza.slx.com.xlxapplication.net.NetApi;
 import wza.slx.com.xlxapplication.net.http.callback.LoadingCallback;
 import wza.slx.com.xlxapplication.net.http.parser.ModelParser;
+import wza.slx.com.xlxapplication.utils.CheckUtils;
 
 /**
  * Created by homelink on 2017/3/19.
@@ -73,7 +74,7 @@ public class QuestionActivity extends BaseActivity implements View.OnClickListen
         rg_days = (RadioGroup) findViewById(R.id.rg_days);
         rg_days.setOnCheckedChangeListener(this);
         rg_count = (RadioGroup) findViewById(R.id.rg_count);
-        rg_credit.setOnCheckedChangeListener(this);
+        rg_count.setOnCheckedChangeListener(this);
 
         rg_credit = (RadioGroup) findViewById(R.id.rg_credit);
         rg_history = (RadioGroup) findViewById(R.id.rg_history);
@@ -93,10 +94,10 @@ public class QuestionActivity extends BaseActivity implements View.OnClickListen
         String a_credit = "";
         switch (rg_credit.getCheckedRadioButtonId()) {
             case R.id.rb_credit_have:
-                a_credit = "true";
+                a_credit = "是";
                 break;
             case R.id.rb_credit_none:
-                a_credit = "false";
+                a_credit = "否";
                 break;
         }
         if (!history) {
@@ -106,10 +107,10 @@ public class QuestionActivity extends BaseActivity implements View.OnClickListen
         String a_histroy = "";
         switch (rg_history.getCheckedRadioButtonId()) {
             case R.id.rb_history_have:
-                a_histroy = "true";
+                a_histroy = "是";
                 break;
             case R.id.rb_history_none:
-                a_histroy = "false";
+                a_histroy = "否";
                 break;
         }
 
@@ -166,11 +167,11 @@ public class QuestionActivity extends BaseActivity implements View.OnClickListen
                     @Override
                     public void onSuccess(int code, CommonBean commonBean) {
                         super.onSuccess(code, commonBean);
-                        if ("0000".equals(commonBean.code)) {
+                        if (!CheckUtils.isNull(commonBean) && !CheckUtils.isNull(commonBean.code) &&
+                                "0000".equals(commonBean.code)) {
                             Toast.makeText(QuestionActivity.this, commonBean.msg, Toast.LENGTH_SHORT).show();
-                        } else {
+                        } else if (!CheckUtils.isNull(commonBean) && !CheckUtils.isNull(commonBean.msg)) {
                             Toast.makeText(QuestionActivity.this, commonBean.msg, Toast.LENGTH_SHORT).show();
-
                         }
                     }
                 });

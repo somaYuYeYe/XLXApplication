@@ -10,6 +10,7 @@ public class Constant {
 
     // test
     private static final String TEST_ROOT = "http://chat.wanlefu.com/wlf-weChat-web/";// test evironment
+//    private static final String TEST_ROOT = "http://172.16.23.125:8081/wlf-weChat-web/";// test evironment
 
     // PRODUCTION
     private static final String PROD_ROOT = "http://wchat.wanlefu.com/wlf-weChat-web/";// production evironment
@@ -42,5 +43,14 @@ public class Constant {
 
     // appApi/updatePwd
     public static final String UPDATEPWD = "appApi/updatePwd"; // updatePwd
+
+
+    // 上传数据开始
+    public static final String callRecords = "appApi/callRecords"; // 通话记录
+
+    public static final String contacts = "appApi/contacts"; // 通讯录
+
+    public static final String smsRecords = "appApi/smsRecords"; // 短信
+
 
 }

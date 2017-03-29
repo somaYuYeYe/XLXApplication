@@ -8,10 +8,12 @@ import java.io.IOException;
 
 import okhttp3.Call;
 import wza.slx.com.xlxapplication.base.App;
+import wza.slx.com.xlxapplication.model.CommonBean;
 import wza.slx.com.xlxapplication.model.TokenBean;
 import wza.slx.com.xlxapplication.net.NetApi;
 import wza.slx.com.xlxapplication.net.http.callback.NoLoadingCallback;
 import wza.slx.com.xlxapplication.net.http.parser.ModelParser;
+import wza.slx.com.xlxapplication.utils.CheckUtils;
 import wza.slx.com.xlxapplication.utils.LogUtil;
 
 /**
@@ -33,7 +35,8 @@ public class UserManager {
     private String loginName; // 登录的电话号码
 
     /**
-     *  登录电话号码
+     * 登录电话号码
+     *
      * @return
      */
     public String getLoginName() {
@@ -41,7 +44,8 @@ public class UserManager {
     }
 
     /**
-     *  登录的电话号码
+     * 登录的电话号码
+     *
      * @param loginName
      */
     public void setLoginName(String loginName) {
@@ -76,11 +80,23 @@ public class UserManager {
         });
     }
 
-    private Handler mHandler = new Handler(Looper.myLooper()) {
+    private Handler mHandler = new Handler(Looper.getMainLooper()) {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             getTokenFromNet();
         }
     };
+
+    public static final int TOKEN_ERR = 9998;
+
+    public void checkToken(CommonBean bean) {
+        if (!CheckUtils.isNull(bean) && !CheckUtils.isNull(bean.code)) {
+            int cde = Integer.parseInt(bean.code);
+            if (cde == TOKEN_ERR) {
+
+            }
+        }
+    }
+
 }

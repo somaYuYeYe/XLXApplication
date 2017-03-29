@@ -63,5 +63,6 @@
     <string name="toast_ques_money_count">请选择您最希望的借款金额</string>
     <string name="toast_ques_purpose">请填写您的借款用途</string>
 
+    <string name="toast_net_err">网络连接异常，请稍后重试一次吧-_-!</string>
 
 </resources>

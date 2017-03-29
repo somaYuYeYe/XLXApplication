@@ -35,7 +35,7 @@ public class FindPwd1Activity extends BaseActivity {
             public void onClick(View view) {
 
                 final String phone = et_phone.getText().toString();
-                if (Utils.isMobile(phone)) {
+                if (!Utils.isMobile(phone)) {
                     Toast.makeText(FindPwd1Activity.this, getString(R.string.toast_phone_err), Toast.LENGTH_SHORT).show();
                     return;
                 }

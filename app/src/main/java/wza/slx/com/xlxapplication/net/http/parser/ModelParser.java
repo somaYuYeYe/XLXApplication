@@ -2,7 +2,11 @@ package wza.slx.com.xlxapplication.net.http.parser;
 
 import com.alibaba.fastjson.JSON;
 
+import java.net.URLDecoder;
+
 import okhttp3.Response;
+import wza.slx.com.xlxapplication.manager.UserManager;
+import wza.slx.com.xlxapplication.model.CommonBean;
 import wza.slx.com.xlxapplication.utils.LogUtil;
 
 /**
@@ -20,8 +24,11 @@ public class ModelParser<T> extends BaseParser<T> {
     @Override
     protected T parse(Response response) throws Exception {
         if (response.isSuccessful()) {
-            LogUtil.i("http body ", " body = " + response.body().string());
-            T object = JSON.parseObject(response.body().string(), clazz);
+            // response.body().string() 只能执行一次
+            String result = response.body().string();
+            URLDecoder.decode(result, "utf-8");
+            LogUtil.i("http body ", " body = " + URLDecoder.decode(result, "utf-8"));
+            T object = JSON.parseObject(result, clazz);
             return object;
         }
         return null;
