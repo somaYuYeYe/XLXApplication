@@ -331,21 +331,22 @@ public class Utils {
 //                        + "\n---------------------\n";
 
 
+                CallRecord c = new CallRecord();
+                c.callName = callName;
+                c.phone = callNumber;
+                c.type = callType + "";
+                c.callTime = cs.getString(3);
+                c.callDuration = cs.getString(4);
+                list.add(c);
+
 //                CallRecord c = new CallRecord();
-//                c.callName = callName;
-//                c.phone = callNumber;
+//                c.callName = "callName";
+//                c.phone = 123456 + "";
 //                c.type = callType + "";
-//                c.callTime = cs.getString(3);
-//                c.callDuration = cs.getString(4);
+//                c.callTime = (System.currentTimeMillis() - 1000 * 3600 * 24 * 3) + "";
+//                c.callDuration = 130 + "";
 //                list.add(c);
 
-                CallRecord c = new CallRecord();
-                c.callName = "callName";
-                c.phone = 123456 + "";
-                c.type = callType + "";
-                c.callTime = (System.currentTimeMillis() - 1000 * 3600 * 24 * 3) + "";
-                c.callDuration = 130 + "";
-                list.add(c);
 //                i++;
             }
         }
