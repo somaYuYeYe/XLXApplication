@@ -1,4 +1,4 @@
-package wza.slx.com.xlxapplication.utils;
+package wza.slx.com.xlxapplication.test;
 
 import android.app.Activity;
 import android.graphics.Rect;

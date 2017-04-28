@@ -1,4 +1,4 @@
-package wza.slx.com.xlxapplication.utils;
+package wza.slx.com.xlxapplication.test;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -53,6 +53,8 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
+
+import wza.slx.com.xlxapplication.utils.CheckUtils;
 
 public class Utilitiessave {
 

@@ -1,4 +1,4 @@
-package wza.slx.com.xlxapplication.utils;
+package wza.slx.com.xlxapplication.test;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -51,6 +51,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import wza.slx.com.xlxapplication.base.App;
+import wza.slx.com.xlxapplication.utils.LogUtil;
 
 
 /**

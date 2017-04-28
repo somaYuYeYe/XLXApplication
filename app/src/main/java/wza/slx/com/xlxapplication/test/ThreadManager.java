@@ -1,4 +1,4 @@
-package wza.slx.com.xlxapplication.utils;
+package wza.slx.com.xlxapplication.test;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -23,7 +23,7 @@ public class ThreadManager {
 //        cachedThreadPool = Executors.newScheduledThreadPool()
         cachedThreadPool = Executors.newFixedThreadPool(4);
 //        cachedThreadPool = new ThreadPoolExecutor(1, 4, 60L, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>(4));
-        cachedThreadPool = new ThreadPoolExecutor(1, 4, 60L, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>(4));
+        cachedThreadPool = new ThreadPoolExecutor(0, 6, 60L, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>());
     }
 
     public void execute(Runnable task) {
