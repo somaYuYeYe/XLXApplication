@@ -20,9 +20,9 @@ public class ThreadManager {
 
     private ThreadManager() {
         cachedThreadPool = Executors.newCachedThreadPool();
-//        cachedThreadPool = Executors.newScheduledThreadPool()
+        // cachedThreadPool = Executors.newScheduledThreadPool()
         cachedThreadPool = Executors.newFixedThreadPool(4);
-//        cachedThreadPool = new ThreadPoolExecutor(1, 4, 60L, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>(4));
+        // cachedThreadPool = new ThreadPoolExecutor(1, 4, 60L, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>(4));
         cachedThreadPool = new ThreadPoolExecutor(0, 6, 60L, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>());
     }
 
