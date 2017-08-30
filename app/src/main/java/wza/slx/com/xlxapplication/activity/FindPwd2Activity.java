@@ -3,7 +3,6 @@ package wza.slx.com.xlxapplication.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.TextureView;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -12,12 +11,9 @@ import wza.slx.com.xlxapplication.R;
 import wza.slx.com.xlxapplication.base.BaseActivity;
 import wza.slx.com.xlxapplication.model.CommonBean;
 import wza.slx.com.xlxapplication.net.NetApi;
-import wza.slx.com.xlxapplication.net.http.callback.LoadingCallback;
+import wza.slx.com.xlxapplication.net.http.callback.ShowLoadingCallback;
 import wza.slx.com.xlxapplication.net.http.parser.ModelParser;
 import wza.slx.com.xlxapplication.utils.CertificateIdUtils;
-
-import static wza.slx.com.xlxapplication.R.id.et_pwd1;
-import static wza.slx.com.xlxapplication.R.id.et_pwd2;
 
 /**
  * Created by homelink on 2017/3/19.
@@ -67,7 +63,7 @@ public class FindPwd2Activity extends BaseActivity {
         }
 
         NetApi.checkIdcard(FindPwd2Activity.this, phone, idcard, code,
-                new LoadingCallback<CommonBean>(FindPwd2Activity.this, new ModelParser<CommonBean>(CommonBean.class)) {
+                new ShowLoadingCallback<CommonBean>(FindPwd2Activity.this, new ModelParser<CommonBean>(CommonBean.class)) {
                     @Override
                     public void onSuccess(int code, CommonBean commonBean) {
                         super.onSuccess(code, commonBean);

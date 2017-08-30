@@ -2,7 +2,6 @@ package wza.slx.com.xlxapplication.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.renderscript.FieldPacker;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -11,7 +10,7 @@ import wza.slx.com.xlxapplication.R;
 import wza.slx.com.xlxapplication.base.BaseActivity;
 import wza.slx.com.xlxapplication.model.CommonBean;
 import wza.slx.com.xlxapplication.net.NetApi;
-import wza.slx.com.xlxapplication.net.http.callback.LoadingCallback;
+import wza.slx.com.xlxapplication.net.http.callback.ShowLoadingCallback;
 import wza.slx.com.xlxapplication.net.http.parser.ModelParser;
 import wza.slx.com.xlxapplication.utils.Utils;
 
@@ -41,7 +40,7 @@ public class FindPwd1Activity extends BaseActivity {
                 }
 
                 NetApi.checkLoginName(FindPwd1Activity.this, phone,
-                        new LoadingCallback<CommonBean>(FindPwd1Activity.this, new ModelParser<CommonBean>(CommonBean.class)) {
+                        new ShowLoadingCallback<CommonBean>(FindPwd1Activity.this, new ModelParser<CommonBean>(CommonBean.class)) {
                             @Override
                             public void onSuccess(int code, CommonBean commonBean) {
                                 super.onSuccess(code, commonBean);

@@ -13,7 +13,7 @@ import wza.slx.com.xlxapplication.R;
 import wza.slx.com.xlxapplication.base.BaseActivity;
 import wza.slx.com.xlxapplication.model.CommonBean;
 import wza.slx.com.xlxapplication.net.NetApi;
-import wza.slx.com.xlxapplication.net.http.callback.LoadingCallback;
+import wza.slx.com.xlxapplication.net.http.callback.ShowLoadingCallback;
 import wza.slx.com.xlxapplication.net.http.parser.ModelParser;
 import wza.slx.com.xlxapplication.utils.CheckUtils;
 
@@ -163,7 +163,7 @@ public class QuestionActivity extends BaseActivity implements View.OnClickListen
             return;
         }
         NetApi.saveQuestionnaire(this, a_credit, a_histroy, a_days, a_count, purpose,
-                new LoadingCallback<CommonBean>(this, new ModelParser<CommonBean>(CommonBean.class)) {
+                new ShowLoadingCallback<CommonBean>(this, new ModelParser<CommonBean>(CommonBean.class)) {
                     @Override
                     public void onSuccess(int code, CommonBean commonBean) {
                         super.onSuccess(code, commonBean);

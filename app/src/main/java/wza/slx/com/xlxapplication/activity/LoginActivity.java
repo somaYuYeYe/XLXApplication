@@ -1,7 +1,6 @@
 package wza.slx.com.xlxapplication.activity;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -15,15 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.alibaba.fastjson.JSON;
-
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.StringReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -35,14 +26,12 @@ import wza.slx.com.xlxapplication.base.BaseActivity;
 import wza.slx.com.xlxapplication.manager.UserManager;
 import wza.slx.com.xlxapplication.model.CommonBean;
 import wza.slx.com.xlxapplication.model.TokenBean;
-import wza.slx.com.xlxapplication.net.Constant;
 import wza.slx.com.xlxapplication.net.NetApi;
-import wza.slx.com.xlxapplication.net.http.callback.LoadingCallback;
+import wza.slx.com.xlxapplication.net.http.callback.ShowLoadingCallback;
 import wza.slx.com.xlxapplication.net.http.callback.NoLoadingCallback;
 import wza.slx.com.xlxapplication.net.http.parser.ModelParser;
 import wza.slx.com.xlxapplication.net.http.parser.StringParser;
 import wza.slx.com.xlxapplication.utils.LogUtil;
-import wza.slx.com.xlxapplication.utils.StreamUtil;
 import wza.slx.com.xlxapplication.utils.Utils;
 
 /**
@@ -251,7 +240,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 //        dialog.show();
 
         NetApi.register(this, phone, pwd, code,
-                new LoadingCallback<CommonBean>(this, new ModelParser<CommonBean>(CommonBean.class)) {
+                new ShowLoadingCallback<CommonBean>(this, new ModelParser<CommonBean>(CommonBean.class)) {
                     @Override
                     public void onSuccess(int code, CommonBean s) {
                         super.onSuccess(code, s);

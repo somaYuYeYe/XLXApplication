@@ -6,16 +6,16 @@ import android.content.Context;
 import wza.slx.com.xlxapplication.net.LoadingProgressDialog;
 import wza.slx.com.xlxapplication.net.http.parser.BaseParser;
 
-public class LoadingCallback<T> extends OkCallback<T> {
+public class ShowLoadingCallback<T> extends OkCallback<T> {
     protected Context context;
 
-    public LoadingCallback(Context context, BaseParser<T> mParser) {
+    public ShowLoadingCallback(Context context, BaseParser<T> mParser) {
         super(mParser);
         this.context = context;
     }
 
 
-    private LoadingCallback(BaseParser<T> mParser) {
+    private ShowLoadingCallback(BaseParser<T> mParser) {
         super(mParser);
     }
 
