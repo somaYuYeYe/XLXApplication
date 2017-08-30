@@ -5,7 +5,7 @@ android {
     useLibrary 'org.apache.http.legacy'
 
     compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    buildToolsVersion '25.0.0'
     defaultConfig {
         applicationId "wza.slx.com.xlxapplication"
         minSdkVersion 15
@@ -13,6 +13,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
     }
 //    buildTypes {
 //        release {
@@ -48,8 +49,8 @@ android {
             shrinkResources false
             signingConfig signingConfigs.debug
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
-            manifestPlaceholders = [label       : "@string/app_name_debug",
-                                    ]
+            manifestPlaceholders = [label: "@string/app_name_debug",
+            ]
 
 //            resValue("string", "baseUrl", "")
 //            resValue("string", "baseImgUrl", "")
@@ -61,8 +62,8 @@ android {
 //            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
             shrinkResources false
             signingConfig signingConfigs.release
-            manifestPlaceholders = [label       : "@string/app_name",
-                                    ]
+            manifestPlaceholders = [label: "@string/app_name",
+            ]
 //            resValue("string", "baseUrl", "")
 //            resValue("string", "baseImgUrl", "")
 //            resValue("string", "strKey", "debugStrValue")
@@ -87,5 +88,8 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.alibaba:fastjson:1.2.24'
     compile 'com.squareup.okhttp3:okhttp:3.4.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support:design:23.4.0'
+    compile 'com.android.support:support-vector-drawable:23.4.0'
     testCompile 'junit:junit:4.12'
 }

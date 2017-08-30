@@ -20,7 +20,7 @@
     <string name="change_pwd_str">修改密码</string>
     <string name="next_step">下一步</string>
     <string name="input_new_pwd">请输入新密码(6-20位)</string>
-    
+
     <string name="find_code_hint">短信验证码</string>
     <string name="find_idcard_hint">您注册时的身份证号</string>
     <!-- 密码成功 -->
@@ -64,5 +64,11 @@
     <string name="toast_ques_purpose">请填写您的借款用途</string>
 
     <string name="toast_net_err">网络连接异常，请稍后重试一次吧-_-!</string>
+    <string name="title_activity_test2">Test2Activity</string>
+    <string name="title_activity_test3">Test3Activity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_test31">Test31Activity</string>
 
 </resources>

@@ -60,6 +60,22 @@ public class WelcomeActivity extends BaseActivity {
 
         Utils.checkPermis(this, Manifest.permission.READ_CALL_LOG, Manifest.permission.READ_CONTACTS,
                 Manifest.permission.READ_SMS);
+
+        test();
+    }
+
+    private void test() {
+        findViewById(R.id.icon_slx).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent i1 = new Intent(WelcomeActivity.this, Test2Activity.class);
+//                Intent i2 = new Intent(WelcomeActivity.this, Test3Activity.class);
+//                startActivities(new Intent[]{i1, i2});
+
+
+
+            }
+        });
     }
 
     private void initView() {
