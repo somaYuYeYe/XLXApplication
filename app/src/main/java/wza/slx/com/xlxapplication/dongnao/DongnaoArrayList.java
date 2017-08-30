@@ -43,7 +43,7 @@ public class DongnaoArrayList<E> {
         if (s == a.length) {
             Object[] newArr = new Object[s + newCapacity(s)];
             System.arraycopy(a, 0, newArr, 0, s);
-            array = a = newArr;|
+            array = a = newArr;
         }
         a[s] = object;
         size = s + 1;
@@ -51,7 +51,7 @@ public class DongnaoArrayList<E> {
     }
 
     public int size() {
-        return size()
+        return size();
     }
 
     public boolean isEmpty() {
@@ -92,17 +92,16 @@ public class DongnaoArrayList<E> {
         System.arraycopy(a, index + 1, a, index, --s - index);
         a[s] = null;
         size = s;
-        return  e;
+        return e;
     }
 
 //    public E remove()
 
 
-
     public E get(int index) {
         Object[] a = array;
         int s = size;
-        if (index>s) {
+        if (index > s) {
             throw new IndexOutOfBoundsException();
         }
         E e = (E) a[index];
