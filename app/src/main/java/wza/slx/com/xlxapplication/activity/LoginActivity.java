@@ -80,6 +80,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         setContentView(R.layout.activity_login);
         initView();
 
+        Log.e("yy", "33333333333333");
+
         NetApi.token(this, new NoLoadingCallback<TokenBean>(LoginActivity.this, new ModelParser<TokenBean>(TokenBean.class)) {
             @Override
             public void onSuccess(int code, TokenBean tokenBean) {
